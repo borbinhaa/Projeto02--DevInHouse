@@ -41,9 +41,7 @@ public class FazendaController {
 
     @PostMapping("/{empresaId}")
     public ResponseEntity<Fazenda> create(@Valid @RequestBody FazendaDTO fazendaDTO, @PathVariable Long empresaId, UriComponentsBuilder uriComponentsBuilder) {
-        System.out.println(fazendaDTO);
         URI uri = uriComponentsBuilder.build(fazendaDTO);
-        graoService.save(empresaId, fazendaDTO.getGrao());
         return ResponseEntity.created(uri).body(fazendaService.save(empresaId, fazendaDTO.toFazenda()));
     }
 

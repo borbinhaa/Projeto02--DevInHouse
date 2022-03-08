@@ -18,7 +18,6 @@ public class FuncionarioService {
     public Funcionario save(Long empresaId, Funcionario funcionario) {
         Empresa empresa = empresaService.findById(empresaId);
         funcionario.setEmpresa(empresa);
-//        empresa.getFuncionarios().add(funcionario);
         return funcionarioRepository.save(funcionario);
     }
 }

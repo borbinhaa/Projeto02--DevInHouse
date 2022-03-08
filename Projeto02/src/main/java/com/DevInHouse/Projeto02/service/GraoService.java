@@ -21,7 +21,6 @@ public class GraoService {
     public Grao save(Long id, Grao grao) {
         Empresa empresa = empresaService.findById(id);
         grao.setEmpresa(empresa);
-//        empresa.getGraos().add(grao);
         return graoRepository.save(grao);
     }
 }

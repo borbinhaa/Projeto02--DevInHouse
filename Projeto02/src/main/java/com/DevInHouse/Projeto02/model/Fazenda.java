@@ -27,13 +27,11 @@ public class Fazenda {
     @NotNull @NotBlank
     private String endereco;
     @ManyToOne
-    @JsonIgnore
     private Grao grao;
     @NotNull
     @Column(name = "estoque_inicial")
     private Double estoqueInicial;
     @ManyToOne
-    @JsonIgnore
     private Empresa empresa;
     @Column(name = "ultima_colheita")
     private LocalDate ultimaColheita;

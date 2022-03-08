@@ -32,7 +32,6 @@ public class FazendaService {
     public Fazenda save(Long id, Fazenda fazenda) {
         Empresa empresa = empresaService.findById(id);
         fazenda.setEmpresa(empresa);
-//        empresa.getFazendas().add(fazenda);
         return fazendaRepository.save(fazenda);
     }
 

@@ -22,7 +22,6 @@ public class Grao {
     @NotBlank
     private String nome;
     @ManyToOne
-    @JsonIgnore
     private Empresa empresa;
     @Column(name = "dias_colheita")
     @NotNull

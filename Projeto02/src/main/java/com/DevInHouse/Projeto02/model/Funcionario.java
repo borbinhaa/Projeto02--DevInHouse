@@ -40,7 +40,6 @@ public class Funcionario {
     @NotNull
     private LocalDate dataContratacao;
     @ManyToOne
-//    @JsonIgnore
     private Empresa empresa;
 
 

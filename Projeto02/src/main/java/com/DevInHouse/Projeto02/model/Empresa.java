@@ -27,10 +27,5 @@ public class Empresa {
     @NotNull
     @NotBlank
     private String endereco;
-//    @OneToMany
-//    private List<Funcionario> funcionarios;
-//    @OneToMany
-//    private List<Fazenda> fazendas;
-//    @OneToMany
-//    private List<Grao> graos;
+
 }
