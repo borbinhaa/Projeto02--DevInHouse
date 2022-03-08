@@ -1,5 +1,6 @@
 package com.DevInHouse.Projeto02.service;
 
+import com.DevInHouse.Projeto02.controller.dto.FazendaColheitaDTO;
 import com.DevInHouse.Projeto02.model.Empresa;
 import com.DevInHouse.Projeto02.model.Fazenda;
 import com.DevInHouse.Projeto02.repository.FazendaRepository;
@@ -20,10 +21,20 @@ public class FazendaService {
         return fazendaRepository.findByEmpresa(empresa);
     }
 
+    public int qtdFazendas(Long empresaId) {
+        return findByEmpresaId(empresaId).size();
+    }
+
+    public List<FazendaColheitaDTO> proximaColheita(Long empresaId) {
+        return findByEmpresaId(empresaId).stream().map(FazendaColheitaDTO::new).toList();
+    }
+
     public Fazenda save(Long id, Fazenda fazenda) {
         Empresa empresa = empresaService.findById(id);
         fazenda.setEmpresa(empresa);
-        empresa.getFazendas().add(fazenda);
+//        empresa.getFazendas().add(fazenda);
         return fazendaRepository.save(fazenda);
     }
+
+
 }
