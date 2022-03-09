@@ -9,13 +9,13 @@ import java.time.LocalDate;
 
 @Getter
 @Setter
-public class FazendaColheitaDTO {
+public class FazendaProximaColheitaDTO {
 
     private Long id;
     private String nome;
     private LocalDate proximaColheita;
 
-    public FazendaColheitaDTO(Fazenda fazenda) {
+    public FazendaProximaColheitaDTO(Fazenda fazenda) {
         this.id = fazenda.getId();
         this.nome = fazenda.getNome();
         this.proximaColheita = getProximaColheita(fazenda);

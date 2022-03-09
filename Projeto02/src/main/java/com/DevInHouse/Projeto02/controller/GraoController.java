@@ -10,7 +10,6 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.net.URI;
-import java.util.List;
 
 @AllArgsConstructor
 @RestController
@@ -21,7 +20,7 @@ public class GraoController {
 
     @PostMapping("/{empresaId}")
     public ResponseEntity<Grao> create(@Valid @RequestBody GraoDTO graoDTO, @PathVariable Long empresaId , UriComponentsBuilder uriComponentsBuilder) {
-        URI uri = uriComponentsBuilder.build(graoDTO);
+        URI uri = uriComponentsBuilder.path("/graos/" + empresaId).build(graoDTO);
         return ResponseEntity.created(uri).body(graoService.save(empresaId, graoDTO.toGrao()));
     }
 

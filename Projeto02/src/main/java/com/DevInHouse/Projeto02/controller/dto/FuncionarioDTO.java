@@ -5,13 +5,10 @@ import com.DevInHouse.Projeto02.model.Funcionario;
 import com.DevInHouse.Projeto02.model.Sexo;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 import org.hibernate.validator.constraints.br.CPF;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;

@@ -1,7 +1,6 @@
 package com.DevInHouse.Projeto02.model;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -29,8 +28,7 @@ public class Fazenda {
     @ManyToOne
     private Grao grao;
     @NotNull
-    @Column(name = "estoque_inicial")
-    private Double estoqueInicial;
+    private Double estoque;
     @ManyToOne
     private Empresa empresa;
     @Column(name = "ultima_colheita")
