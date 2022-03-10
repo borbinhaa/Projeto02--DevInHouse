@@ -3,7 +3,6 @@ package com.DevInHouse.Projeto02.service;
 import com.DevInHouse.Projeto02.controller.dto.FazendaProximaColheitaDTO;
 import com.DevInHouse.Projeto02.model.Empresa;
 import com.DevInHouse.Projeto02.model.Fazenda;
-import com.DevInHouse.Projeto02.model.Grao;
 import com.DevInHouse.Projeto02.repository.FazendaRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

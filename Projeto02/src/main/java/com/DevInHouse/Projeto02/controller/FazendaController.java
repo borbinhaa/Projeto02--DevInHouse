@@ -1,11 +1,10 @@
 package com.DevInHouse.Projeto02.controller;
 
-import com.DevInHouse.Projeto02.controller.dto.FazendaProximaColheitaDTO;
-import com.DevInHouse.Projeto02.controller.dto.FazendaDTO;
 import com.DevInHouse.Projeto02.controller.dto.ColheitaSaqueDTO;
+import com.DevInHouse.Projeto02.controller.dto.FazendaDTO;
+import com.DevInHouse.Projeto02.controller.dto.FazendaProximaColheitaDTO;
 import com.DevInHouse.Projeto02.model.Fazenda;
 import com.DevInHouse.Projeto02.service.FazendaService;
-import com.DevInHouse.Projeto02.service.GraoService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +20,6 @@ import java.util.List;
 public class FazendaController {
 
     private FazendaService fazendaService;
-    private GraoService graoService;
 
     @GetMapping("/{empresaId}")
     public ResponseEntity<List<Fazenda>> index(@PathVariable Long empresaId) {

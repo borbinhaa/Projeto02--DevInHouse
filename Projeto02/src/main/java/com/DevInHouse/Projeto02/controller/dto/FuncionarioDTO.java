@@ -17,6 +17,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 public class FuncionarioDTO {
+
     @NotNull
     @NotBlank
     private String nome;

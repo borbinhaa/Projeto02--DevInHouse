@@ -22,7 +22,6 @@ public class FazendaProximaColheitaDTO {
     }
 
     private LocalDate getProximaColheita(Fazenda fazenda) {
-        System.out.println(fazenda);
         Grao grao = fazenda.getGrao();
         return fazenda.getUltimaColheita().plusDays(grao.getDiasColheita());
     }

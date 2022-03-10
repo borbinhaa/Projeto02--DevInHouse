@@ -46,10 +46,14 @@ public class GraoService {
 
         for (Grao grao: graoList) {
             List<Fazenda> farmsByGrao = fazendaRepository.findByGrao(grao);
+            if (farmsByGrao.isEmpty()) {
+                lista.add(new QuantidadeGraoDTO(grao.getNome(), 0D));
+                continue;
+            }
             List<Double> estoques = new ArrayList<>();
             farmsByGrao.forEach(farm -> estoques.add(farm.getEstoque()));
             Double estoqueFinal = estoques.stream().reduce(Double::sum).get();
-            lista.add(new QuantidadeGraoDTO(farmsByGrao.get(0).getGrao().getNome(), estoqueFinal));
+            lista.add(new QuantidadeGraoDTO(grao.getNome(), estoqueFinal));
         }
         return lista;
     }

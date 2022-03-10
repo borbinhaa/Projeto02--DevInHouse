@@ -5,7 +5,7 @@ import com.DevInHouse.Projeto02.model.Fazenda;
 import com.DevInHouse.Projeto02.model.Grao;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
+
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;

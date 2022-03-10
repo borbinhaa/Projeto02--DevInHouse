@@ -3,7 +3,6 @@ package com.DevInHouse.Projeto02.controller;
 import com.DevInHouse.Projeto02.controller.dto.GraoDTO;
 import com.DevInHouse.Projeto02.controller.dto.QuantidadeGraoDTO;
 import com.DevInHouse.Projeto02.model.Grao;
-import com.DevInHouse.Projeto02.service.FazendaService;
 import com.DevInHouse.Projeto02.service.GraoService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +11,6 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.net.URI;
-import java.util.Collections;
 import java.util.List;
 
 @AllArgsConstructor
@@ -29,8 +27,6 @@ public class GraoController {
 
     @GetMapping("/{empresaId}/estoque")
     public ResponseEntity<List<QuantidadeGraoDTO>> estoque(@PathVariable Long empresaId) {
-//        List<QuantidadeGraoDTO> lista = graoService.findGraoEstoque(empresaId);
-//        List<QuantidadeGraoDTO> listaOrdenada = lista.stream().sorted(QuantidadeGraoDTO::compareTo).toList();
         return ResponseEntity.ok().body(graoService.findGraoEstoque(empresaId));
     }
 
