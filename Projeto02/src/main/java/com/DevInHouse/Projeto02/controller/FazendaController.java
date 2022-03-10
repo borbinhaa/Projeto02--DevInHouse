@@ -2,7 +2,7 @@ package com.DevInHouse.Projeto02.controller;
 
 import com.DevInHouse.Projeto02.controller.dto.FazendaProximaColheitaDTO;
 import com.DevInHouse.Projeto02.controller.dto.FazendaDTO;
-import com.DevInHouse.Projeto02.controller.dto.colheitaSaqueDTO;
+import com.DevInHouse.Projeto02.controller.dto.ColheitaSaqueDTO;
 import com.DevInHouse.Projeto02.model.Fazenda;
 import com.DevInHouse.Projeto02.service.FazendaService;
 import com.DevInHouse.Projeto02.service.GraoService;
@@ -44,18 +44,18 @@ public class FazendaController {
         return ResponseEntity.created(uri).body(fazendaService.save(empresaId, fazendaDTO.toFazenda()));
     }
 
-    @PostMapping("/colheita")
-    public ResponseEntity<Fazenda> addColheita(@Valid @RequestBody colheitaSaqueDTO colheitaSaqueDTO, UriComponentsBuilder uriComponentsBuilder) {
+    @PostMapping("/colheita/{fazendaId}")
+    public ResponseEntity<Fazenda> addColheita(@PathVariable Long fazendaId, @Valid @RequestBody ColheitaSaqueDTO colheitaSaqueDTO, UriComponentsBuilder uriComponentsBuilder) {
         URI uri = uriComponentsBuilder.path("/fazendas/").build(colheitaSaqueDTO);
-        Fazenda fazenda = colheitaSaqueDTO.getFazenda();
+        Fazenda fazenda = fazendaService.findById(fazendaId);
         Double qtd = colheitaSaqueDTO.getQtd();
         return ResponseEntity.created(uri).body(fazendaService.colheita(qtd, fazenda));
     }
 
-    @PostMapping("/saque")
-    public ResponseEntity<Fazenda> addSaque(@Valid @RequestBody colheitaSaqueDTO colheitaSaqueDTO, UriComponentsBuilder uriComponentsBuilder) {
+    @PostMapping("/saque/{fazendaId}")
+    public ResponseEntity<Fazenda> addSaque(@PathVariable Long fazendaId, @Valid @RequestBody ColheitaSaqueDTO colheitaSaqueDTO, UriComponentsBuilder uriComponentsBuilder) {
         URI uri = uriComponentsBuilder.path("/fazendas/").build(colheitaSaqueDTO);
-        Fazenda fazenda = colheitaSaqueDTO.getFazenda();
+        Fazenda fazenda = fazendaService.findById(fazendaId);
         Double qtd = colheitaSaqueDTO.getQtd();
         return ResponseEntity.created(uri).body(fazendaService.saque(qtd, fazenda));
     }

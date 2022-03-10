@@ -3,6 +3,7 @@ package com.DevInHouse.Projeto02.service;
 import com.DevInHouse.Projeto02.controller.dto.FazendaProximaColheitaDTO;
 import com.DevInHouse.Projeto02.model.Empresa;
 import com.DevInHouse.Projeto02.model.Fazenda;
+import com.DevInHouse.Projeto02.model.Grao;
 import com.DevInHouse.Projeto02.repository.FazendaRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,10 @@ public class FazendaService {
 
     private FazendaRepository fazendaRepository;
     private EmpresaService empresaService;
+
+    public Fazenda findById(Long id) {
+        return fazendaRepository.findById(id).orElseThrow();
+    }
 
     public List<Fazenda> findByEmpresaId(Long empresaId){
         Empresa empresa = empresaService.findById(empresaId);
@@ -44,11 +49,11 @@ public class FazendaService {
     }
 
     public Fazenda saque(Double qtd, Fazenda fazenda) {
-        Double estoque = fazenda.getEstoque() - qtd;
+        double estoque = fazenda.getEstoque() - qtd;
         if (estoque < 0){
             throw new IllegalArgumentException("Quantidade maior que o estoque");
         }
-        fazenda.setEstoque(estoque); // precisa dar um update na fazenda
+        fazenda.setEstoque(estoque);
         fazendaRepository.save(fazenda);
         return fazenda;
     }
