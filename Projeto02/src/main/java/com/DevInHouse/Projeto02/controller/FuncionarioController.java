@@ -10,6 +10,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.net.URI;
+import java.util.List;
 
 @AllArgsConstructor
 @RestController
@@ -17,6 +18,11 @@ import java.net.URI;
 public class FuncionarioController {
 
     private FuncionarioService funcionarioService;
+
+    @GetMapping("/{empresaId}")
+    public ResponseEntity<List<Funcionario>> getByEmpresa(@PathVariable Long empresaId) {
+        return ResponseEntity.ok().body(funcionarioService.findByEmpresaId(empresaId));
+    }
 
     @PostMapping("/{empresaId}")
     public ResponseEntity<Funcionario> create(@Valid @RequestBody FuncionarioDTO funcionarioDTO, @PathVariable Long empresaId , UriComponentsBuilder uriComponentsBuilder) {
