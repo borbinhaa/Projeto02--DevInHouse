@@ -25,4 +25,8 @@ public class FuncionarioService {
         Empresa empresa = empresaService.findById(id);
         return funcionarioRepository.findByEmpresa(empresa);
     }
+
+    public int qtdFuncionario(Long empresaId) {
+        return findByEmpresaId(empresaId).size();
+    }
 }

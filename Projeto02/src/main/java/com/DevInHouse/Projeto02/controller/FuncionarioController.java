@@ -24,6 +24,11 @@ public class FuncionarioController {
         return ResponseEntity.ok().body(funcionarioService.findByEmpresaId(empresaId));
     }
 
+    @GetMapping("/{empresaId}/qtd")
+    public ResponseEntity<Integer> qtdFuncionario(@PathVariable Long empresaId) {
+        return ResponseEntity.ok().body(funcionarioService.qtdFuncionario(empresaId));
+    }
+
     @PostMapping("/{empresaId}")
     public ResponseEntity<Funcionario> create(@Valid @RequestBody FuncionarioDTO funcionarioDTO, @PathVariable Long empresaId , UriComponentsBuilder uriComponentsBuilder) {
         URI uri = uriComponentsBuilder.path("/funcionarios/" + empresaId).build(funcionarioDTO);
