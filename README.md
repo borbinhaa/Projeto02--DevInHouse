@@ -4,20 +4,20 @@
 
 Uma REST api desenvolvido em java no qual será possível:
 
-- [ x ] Criar empresas
-- [ x ] Criar fazendas
-- [ x ] Criar grãos
-- [ x ] Criar funcionários
-- [ x ] Ver todas as empresas
-- [ x ] Ver todas as fazendas de uma empresa
-- [ x ] Ver a quantidade de fazendas de uma empresa
-- [ x ] Ver quando será a próxima colheita de uma fazenda
-- [ x ] Adicionar uma colheita em uma fazenda
-- [ x ] Adicionar uma saque de uma fazenda
-- [ x ] Ver os grãos de uma empresa
-- [ x ] Ver os estoques desses grãos
-- [ x ] Ver os funcionários de uma empresa
-- [ x ] Ver a quantidade de funcionários em uma empresa
+- [x] Criar empresas
+- [x] Criar fazendas
+- [x] Criar grãos
+- [x] Criar funcionários
+- [x] Ver todas as empresas
+- [x] Ver todas as fazendas de uma empresa
+- [x] Ver a quantidade de fazendas de uma empresa
+- [x] Ver quando será a próxima colheita de uma fazenda
+- [x] Adicionar uma colheita em uma fazenda
+- [x] Adicionar uma saque de uma fazenda
+- [x] Ver os grãos de uma empresa
+- [x] Ver os estoques desses grãos
+- [x] Ver os funcionários de uma empresa
+- [x] Ver a quantidade de funcionários em uma empresa
 
 
 ## Como usar:
