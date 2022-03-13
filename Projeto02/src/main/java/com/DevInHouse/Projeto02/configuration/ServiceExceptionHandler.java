@@ -48,7 +48,7 @@ public class ServiceExceptionHandler {
     }
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
-    public ResponseEntity<?> wrongDataType(HttpMessageNotReadableException exception) {
+    public ResponseEntity<String> formularioErrado(HttpMessageNotReadableException exception) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Você enviou dados errados, favor corrija.");
     }
 
