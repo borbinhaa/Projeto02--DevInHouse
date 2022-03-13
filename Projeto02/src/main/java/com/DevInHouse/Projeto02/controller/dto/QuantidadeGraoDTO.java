@@ -16,7 +16,7 @@ public class QuantidadeGraoDTO implements Comparable<QuantidadeGraoDTO>{
 
     @Override
     public int compareTo(QuantidadeGraoDTO o) {
-        return o.getEstoque().compareTo(this.getEstoque());
+        return this.getEstoque().compareTo(o.getEstoque());
     }
 }
 
