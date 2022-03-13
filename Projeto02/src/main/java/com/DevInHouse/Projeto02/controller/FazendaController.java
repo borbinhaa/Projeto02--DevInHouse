@@ -42,7 +42,7 @@ public class FazendaController {
         return ResponseEntity.created(uri).body(fazendaService.save(empresaId, fazendaDTO.toFazenda()));
     }
 
-    @PostMapping("/colheita/{fazendaId}")
+    @PutMapping("/colheita/{fazendaId}")
     public ResponseEntity<Fazenda> addColheita(@PathVariable Long fazendaId, @Valid @RequestBody ColheitaSaqueDTO colheitaSaqueDTO, UriComponentsBuilder uriComponentsBuilder) {
         URI uri = uriComponentsBuilder.path("/fazendas/").build(colheitaSaqueDTO);
         Fazenda fazenda = fazendaService.findById(fazendaId);
@@ -50,7 +50,7 @@ public class FazendaController {
         return ResponseEntity.created(uri).body(fazendaService.colheita(qtd, fazenda));
     }
 
-    @PostMapping("/saque/{fazendaId}")
+    @PutMapping("/saque/{fazendaId}")
     public ResponseEntity<Fazenda> addSaque(@PathVariable Long fazendaId, @Valid @RequestBody ColheitaSaqueDTO colheitaSaqueDTO, UriComponentsBuilder uriComponentsBuilder) {
         URI uri = uriComponentsBuilder.path("/fazendas/").build(colheitaSaqueDTO);
         Fazenda fazenda = fazendaService.findById(fazendaId);

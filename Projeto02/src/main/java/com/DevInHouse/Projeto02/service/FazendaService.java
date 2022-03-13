@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @AllArgsConstructor
 @Service
@@ -18,7 +19,7 @@ public class FazendaService {
     private EmpresaService empresaService;
 
     public Fazenda findById(Long id) {
-        return fazendaRepository.findById(id).orElseThrow();
+        return fazendaRepository.findById(id).orElseThrow(() ->new NoSuchElementException("Fazenda com o id " + id + " não encontrado."));
     }
 
     public List<Fazenda> findByEmpresaId(Long empresaId){
