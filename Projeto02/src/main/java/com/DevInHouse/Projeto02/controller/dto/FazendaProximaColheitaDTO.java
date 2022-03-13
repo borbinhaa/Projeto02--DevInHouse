@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 @Getter
 @Setter
@@ -13,7 +14,7 @@ public class FazendaProximaColheitaDTO {
 
     private Long id;
     private String nome;
-    private LocalDate proximaColheita;
+    private String proximaColheita;
 
     public FazendaProximaColheitaDTO(Fazenda fazenda) {
         this.id = fazenda.getId();
@@ -21,8 +22,10 @@ public class FazendaProximaColheitaDTO {
         this.proximaColheita = getProximaColheita(fazenda);
     }
 
-    private LocalDate getProximaColheita(Fazenda fazenda) {
+    private String getProximaColheita(Fazenda fazenda) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         Grao grao = fazenda.getGrao();
-        return fazenda.getUltimaColheita().plusDays(grao.getDiasColheita());
+        LocalDate diaProximaColheita = fazenda.getUltimaColheita().plusDays(grao.getDiasColheita());
+        return diaProximaColheita.format(formatter);
     }
 }
