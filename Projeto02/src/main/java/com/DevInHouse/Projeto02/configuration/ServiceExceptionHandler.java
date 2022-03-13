@@ -4,6 +4,7 @@ import com.DevInHouse.Projeto02.controller.dto.ArgumentNotValidDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.format.annotation.NumberFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -23,17 +24,17 @@ public class ServiceExceptionHandler {
     private final MessageSource messageSource;
 
     @ExceptionHandler(NoSuchElementException.class)
-    public ResponseEntity<String> idNotFound(NoSuchElementException exception, HttpServletRequest request) {
+    public ResponseEntity<String> idNotFound(NoSuchElementException exception) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(exception.getMessage());
     }
 
     @ExceptionHandler(IllegalArgumentException.class)
-    public ResponseEntity<String> qtdMaiorEstoque(IllegalArgumentException exception, HttpServletRequest request) {
+    public ResponseEntity<String> qtdMaiorEstoque(IllegalArgumentException exception) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(exception.getMessage());
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<List<ArgumentNotValidDTO>> argumentNotValid(MethodArgumentNotValidException exception, HttpServletRequest request) {
+    public ResponseEntity<List<ArgumentNotValidDTO>> argumentNotValid(MethodArgumentNotValidException exception) {
         List<ArgumentNotValidDTO> listErrors = new ArrayList<>();
         List<FieldError> fieldErrors = exception.getBindingResult().getFieldErrors();
 
@@ -47,8 +48,8 @@ public class ServiceExceptionHandler {
     }
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
-    public ResponseEntity<?> wrongDataType(HttpMessageNotReadableException exception, HttpServletRequest request) {
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Você enviou dados em formatos errados");
+    public ResponseEntity<?> wrongDataType(HttpMessageNotReadableException exception) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Você enviou dados errados, favor corrija.");
     }
 
 

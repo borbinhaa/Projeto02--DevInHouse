@@ -3,9 +3,11 @@ package com.DevInHouse.Projeto02.controller.dto;
 import com.DevInHouse.Projeto02.model.Empresa;
 import com.DevInHouse.Projeto02.model.Funcionario;
 import com.DevInHouse.Projeto02.model.Sexo;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.br.CPF;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -27,13 +29,15 @@ public class FuncionarioDTO {
     private String cpf;
     @NotNull @NotBlank
     private String endereco;
-    @Pattern(regexp = "^\\([0-9]{2}\\) ?[0-9]{9}$", message = "Digite um telefone valido\nEX: (XX) XXXXXXXXX")
+    @Pattern(regexp = "^\\([0-9]{2}\\) ?[0-9]{9}$", message = "Digite um telefone valido EX: (XX) XXXXXXXXX")
     private String telefone;
     @Enumerated(EnumType.STRING)
     private Sexo sexo;
     @NotNull
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataNascimento;
     @NotNull
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataContratacao;
     private Empresa empresa;
 

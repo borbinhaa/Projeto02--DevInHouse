@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @AllArgsConstructor
 @Service
@@ -19,6 +20,10 @@ public class GraoService {
     private GraoRepository graoRepository;
     private FazendaRepository fazendaRepository;
     private EmpresaService empresaService;
+
+    public Grao findById(Long id) {
+        return graoRepository.findById(id).orElseThrow(() ->new NoSuchElementException("Grao com o id " + id + " não encontrado."));
+    }
 
     public Grao save(Long id, Grao grao) {
         Empresa empresa = empresaService.findById(id);

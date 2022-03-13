@@ -3,11 +3,14 @@ package com.DevInHouse.Projeto02.controller.dto;
 import com.DevInHouse.Projeto02.model.Empresa;
 import com.DevInHouse.Projeto02.model.Fazenda;
 import com.DevInHouse.Projeto02.model.Grao;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.time.LocalDate;
 
 @Getter
@@ -20,11 +23,14 @@ public class FazendaDTO {
     @NotNull @NotBlank
     private String endereco;
     @NotNull
-    private Grao grao;
+    @Pattern(regexp = "^[0-9]+$", message = "Favor inserir um número inteiro")
+    private String graoId;
     @NotNull
-    private Double estoque;
+    @Pattern(regexp = "^[0-9]+(\\.[0-9]*)?$", message = "Digite um número maior que zero."  )
+    private String estoque;
     private Empresa empresa;
     @NotNull
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate ultimaColheita;
 
 
@@ -32,8 +38,7 @@ public class FazendaDTO {
         Fazenda fazenda = new Fazenda();
         fazenda.setNome(this.nome);
         fazenda.setEndereco(this.endereco);
-        fazenda.setGrao(this.grao);
-        fazenda.setEstoque(this.estoque);
+        fazenda.setEstoque(Double.valueOf(this.estoque));
         fazenda.setUltimaColheita(this.ultimaColheita);
         return fazenda;
     }
