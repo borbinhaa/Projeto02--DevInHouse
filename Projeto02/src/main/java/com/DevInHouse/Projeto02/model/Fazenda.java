@@ -3,7 +3,6 @@ package com.DevInHouse.Projeto02.model;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;

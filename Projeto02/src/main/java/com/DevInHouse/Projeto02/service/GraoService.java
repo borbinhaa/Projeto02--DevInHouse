@@ -46,7 +46,7 @@ public class GraoService {
         return list.stream().sorted(QuantidadeGraoDTO::compareTo).toList();
     }
 
-    public List<QuantidadeGraoDTO> createDTOs(List<Grao> graoList) {
+    private List<QuantidadeGraoDTO> createDTOs(List<Grao> graoList) {
         List<QuantidadeGraoDTO> lista = new ArrayList<>();
 
         for (Grao grao: graoList) {
